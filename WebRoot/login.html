@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js">
+</script>
+<script>
+    $(document).ready(function(){
+        $("#p1").click(function(){
+            
+            $.post("http://v.juhe.cn/weather/index",
+            	    {
+            	        cityname:"%E6%B9%98%E6%BD%AD",
+            	        dtype:"json",
+            	        format:"1",
+            	        key:"63280f6cc5f8e5cd634dbdf6c70e728c"
+            	    },
+            	        function(data,status){
+            	        alert("数据: \n" + data + "\n状态: " + status);
+            	    });
+        });
+    });
+</script>
+</head>
+
+<body>
+<h2>这是一个标题</h2>
+<p>这是一个段落。</p>
+<p>这是另一个段落。</p>
+<p>这是另一个段落。</p>
+click send post to http://localhost:8080/test1/login?user=菜鸟&password=123
+<button id="p1">Click</button>
+</body>
+</html>

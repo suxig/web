@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js">
+</script>
+<script>
+function btnOk_click(){
+    var id = $("#id").val();
+    var name = $("#name").val();
+    var age = $("#age").val();
+    var dept = $("#dept").val();
+    var address = $("#address").val();
+    if(id==""){
+        alert("请输入id！");
+        $("#id").focus();
+        return false
+    }
+    if(name==""){
+        alert("请输入name！");
+        $("#name").focus();
+        return false
+    }
+    if(age==""){
+        alert("请输入age！");
+        $("#age").focus();
+        return false
+    }
+    if(dept==""){
+        alert("请输入dpet！");
+        $("#dept").focus();
+        return false
+    }
+    if(address==""){
+        alert("请输入address！");
+        $("#address").focus();
+        return false
+    }
+    $(document).ready(function(){
+            $.post("http://520-023:8080/test1/create",
+            	    {
+            	        id: id,
+            	        name: name,
+            	        age: age,
+            	        dept: dept,
+            	        address: address
+            	    },
+            	        function(data,status){
+            	        //alert("数据: \n" + data + "\n状态: " + status);
+            	        $("#result").text(data);
+            	    });
+    });
+    $(function(){
+               jump1();
+        });
+ 
+        function jump1(){
+            url = 'qa.html?id='+id+'&name='+name;//此处拼接内容
+            location.href = url;
+        }
+}
+</script>
+</head>
+<body>
+Input id: <input type="text" name="firstname" id="id"><br>
+Input name: <input type="text" name="lastname" id="name"><br>
+Input age: <input type="text" name="firstname1" id="age"><br>
+Input dept: <input type="text" name="lastname1" id="dept"><br>
+Input address: <input type="text" name="lastname2" id="address"><br>
+<button type="button" onclick="btnOk_click()">提交</button>
+</body>
+</html>
